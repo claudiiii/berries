@@ -1,0 +1,40 @@
+FROM registry.fedoraproject.org/fedora-toolbox:41
+
+LABEL com.github.containers.toolbox="true" \
+    usage="This image is meant to be used with the toolbox or distrobox command" \
+    summary="A small image containing common needed tools. Fedora edition."
+
+COPY distrobox-packages /
+COPY extra-packages /
+
+RUN dnf -y upgrade && \
+    dnf -y install $(cat /distrobox-packages) && \
+    dnf -y install $(cat /extra-packages) && \
+    dnf clean all
+
+
+RUN rm /distrobox-packages && rm /extra-packages
+
+# Set up dependencies and cleaner Distrobox integration
+RUN dnf install -y 'dnf-command(copr)' && \
+    dnf copr enable -y kylegospo/distrobox-utils && \
+    dnf install -y xdg-utils-distrobox adw-gtk3-theme && \
+    dnf clean all
+
+# curl -Lo /etc/yum.repos.d/negativo17-fedora-multimedia.repo https://negativo17.org/repos/fedora-multimedia.repo
+
+RUN dnf config-manager --add-repo=https://negativo17.org/repos/fedora-multimedia.repo && \
+    dnf install -y \
+    libheif \
+    libva \
+    libva-intel-media-driver \
+    mesa-dri-drivers \
+    mesa-filesystem \
+    mesa-libEGL \
+    mesa-libGL \
+    mesa-libgbm \
+    mesa-libglapi \
+    mesa-libxatracker \
+    mesa-va-drivers \
+    mesa-vulkan-drivers && \
+    dnf clean all

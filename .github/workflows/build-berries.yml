@@ -28,6 +28,7 @@ jobs:
           - apicot
           - wacan
           - durin
+          - figy
       fail-fast: false
     steps:
       # Checkout push-to-registry action GitHub repository
