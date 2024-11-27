@@ -14,7 +14,8 @@ RUN dnf -y upgrade && \
 
 RUN rm /distrobox-packages && rm /extra-packages
 
-RUN dnf config-manager --add-repo=https://negativo17.org/repos/fedora-multimedia.repo && \
+RUN curl -o /etc/yum.repos.d/fedora-multimedia.repo https://negativo17.org/repos/fedora-multimedia.repo && \
+    dnf update && \
     dnf install -y \
     libheif \
     libva \
