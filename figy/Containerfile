@@ -12,16 +12,7 @@ RUN dnf -y upgrade && \
     dnf -y install $(cat /extra-packages) && \
     dnf clean all
 
-
 RUN rm /distrobox-packages && rm /extra-packages
-
-# Set up dependencies and cleaner Distrobox integration
-RUN dnf install -y 'dnf-command(copr)' && \
-    dnf copr enable -y kylegospo/distrobox-utils && \
-    dnf install -y xdg-utils-distrobox adw-gtk3-theme && \
-    dnf clean all
-
-# curl -Lo /etc/yum.repos.d/negativo17-fedora-multimedia.repo https://negativo17.org/repos/fedora-multimedia.repo
 
 RUN dnf config-manager --add-repo=https://negativo17.org/repos/fedora-multimedia.repo && \
     dnf install -y \
