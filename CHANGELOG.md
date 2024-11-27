@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/claudiiii/berries/compare/v1.0.0...v1.1.0) (2024-11-27)
+
+
+### Features
+
+* add fedora based distrobox ([3770d36](https://github.com/claudiiii/berries/commit/3770d36ca8be8aa693a0f9a468516d84bde8a214))
+
+
+### Bug Fixes
+
+* add redora-multimeida repo directly ([2c95da4](https://github.com/claudiiii/berries/commit/2c95da4209699cdf6320c4a482d77ce886609692))
+* remove packages that can't be installed ([117459f](https://github.com/claudiiii/berries/commit/117459f9ba443d5030380235345e121ddcc8f15c))
+* update not working ([f82fb3b](https://github.com/claudiiii/berries/commit/f82fb3b187545af2b5fc0dc4eaa8e8628013f6e2))
+
 ## 1.0.0 (2024-10-10)
 
 
